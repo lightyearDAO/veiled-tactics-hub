@@ -1,0 +1,48 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#0f172a" rx="6"/>
+  
+  <!-- Grid pattern background -->
+  <defs>
+    <pattern id="grid" width="4" height="4" patternUnits="userSpaceOnUse">
+      <path d="M 4 0 L 0 0 0 4" fill="none" stroke="#3b82f6" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="32" height="32" fill="url(#grid)"/>
+  
+  <!-- Radar sweep circles -->
+  <circle cx="16" cy="16" r="14" fill="none" stroke="#10b981" stroke-width="1" opacity="0.5"/>
+  <circle cx="16" cy="16" r="10" fill="none" stroke="#10b981" stroke-width="1" opacity="0.3"/>
+  <circle cx="16" cy="16" r="6" fill="none" stroke="#10b981" stroke-width="1" opacity="0.2"/>
+  
+  <!-- Target crosshair -->
+  <g stroke="#3b82f6" stroke-width="2" fill="none">
+    <!-- Horizontal line -->
+    <line x1="8" y1="16" x2="24" y2="16"/>
+    <!-- Vertical line -->
+    <line x1="16" y1="8" x2="16" y2="24"/>
+    <!-- Outer circle -->
+    <circle cx="16" cy="16" r="8"/>
+    <!-- Inner circle -->
+    <circle cx="16" cy="16" r="4"/>
+  </g>
+  
+  <!-- Center dot -->
+  <circle cx="16" cy="16" r="2" fill="#ef4444"/>
+  
+  <!-- Tactical corner markers -->
+  <g fill="#10b981" opacity="0.6">
+    <!-- Top-left -->
+    <rect x="2" y="2" width="3" height="1"/>
+    <rect x="2" y="2" width="1" height="3"/>
+    <!-- Top-right -->
+    <rect x="27" y="2" width="3" height="1"/>
+    <rect x="29" y="2" width="1" height="3"/>
+    <!-- Bottom-left -->
+    <rect x="2" y="29" width="3" height="1"/>
+    <rect x="2" y="27" width="1" height="3"/>
+    <!-- Bottom-right -->
+    <rect x="27" y="29" width="3" height="1"/>
+    <rect x="29" y="27" width="1" height="3"/>
+  </g>
+</svg>
