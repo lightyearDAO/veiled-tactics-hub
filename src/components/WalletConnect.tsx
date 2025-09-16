@@ -1,7 +1,7 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useBalance } from 'wagmi';
 import { Badge } from './ui/badge';
-import { Card, CardContent } from './ui/card';
+import { Card } from './ui/card';
 import { Shield, Users } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -10,6 +10,10 @@ export const WalletConnect = () => {
   const { data: balance } = useBalance({
     address: address,
   });
+
+  console.log('WalletConnect - isConnected:', isConnected);
+  console.log('WalletConnect - address:', address);
+  console.log('WalletConnect - chain:', chain);
 
   if (isConnected) {
     return (
