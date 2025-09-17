@@ -81,8 +81,10 @@ const Index = () => {
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" className="font-tactical">
-                Learn More
+              <Button variant="outline" size="lg" className="font-tactical" asChild>
+                <Link to="/wallet-test">
+                  Test Wallet
+                </Link>
               </Button>
             </div>
           </section>
