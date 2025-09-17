@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TacticalGrid } from '@/components/TacticalGrid';
 import { TacticalLogo } from '@/components/TacticalLogo';
+import { WalletConnect } from '@/components/WalletConnect';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -8,22 +9,15 @@ import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Users, Shield, Plus, Search, ArrowLeft, Sparkles, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useAccount } from 'wagmi';
 
 const Squad = () => {
-  const [isConnected, setIsConnected] = useState(false);
+  const { isConnected, address } = useAccount();
   const [squadName, setSquadName] = useState('');
   const [squadCode, setSquadCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [joinDialogOpen, setJoinDialogOpen] = useState(false);
-
-  const handleConnect = async () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsConnected(true);
-      setIsLoading(false);
-    }, 2000);
-  };
 
   const handleCreateSquad = async () => {
     if (!squadName.trim()) return;
@@ -75,23 +69,7 @@ const Squad = () => {
 
         <main className="relative z-10 p-6">
           <div className="max-w-2xl mx-auto mt-20">
-            <Card className="p-8 bg-gradient-tactical border-border/50 shadow-tactical text-center">
-              <div className="p-3 bg-primary/20 rounded-lg w-fit mx-auto mb-6">
-                <Shield className="w-8 h-8 text-primary" />
-              </div>
-              <h2 className="text-2xl font-tactical text-foreground mb-4">Secure Authentication Required</h2>
-              <p className="text-muted-foreground mb-6 font-tactical">
-                Connect your wallet to access squad formation and tactical coordination features
-              </p>
-              <Button 
-                onClick={handleConnect}
-                disabled={isLoading}
-                className="w-full font-tactical bg-primary hover:bg-primary/90 text-primary-foreground"
-                size="lg"
-              >
-                {isLoading ? 'Connecting...' : 'Connect Wallet'}
-              </Button>
-            </Card>
+            <WalletConnect />
           </div>
         </main>
       </div>
@@ -115,7 +93,7 @@ const Squad = () => {
           <div className="flex items-center gap-4">
             <Badge variant="outline" className="font-tactical text-accent border-accent/50">
               <Shield className="w-3 h-3 mr-1" />
-              Connected: 0x1234...5678
+              Connected: {address?.slice(0, 6)}...{address?.slice(-4)}
             </Badge>
           </div>
         </div>
